@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(to bottom, #FF6B6B, #FFD166);
+            color: #000;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .title {
+            font-weight: bold;
+            color: blue;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .strength {
+            font-weight: bold;
+            color: green;
+        }
+
+        .register-button {
+            background-color: red;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #ethnusLink {
+            color: red;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Registration Form</h1>
+        <form id="registrationForm">
+            <div class="form-group">
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName" required>
+                <span class="strength" id="firstNameStrength"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" required>
+                <span class="strength" id="lastNameStrength"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <span class="strength" id="emailStrength"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <span class="strength" id="passwordStrength"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Re-enter Password:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+            </div>
+
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <input type="radio" id="male" name="gender" value="Male">
+                <label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="Female">
+                <label for="female">Female</label>
+            </div>
+
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phoneNumber">Phone Number:</label>
+                <input type="tel" id="phoneNumber" name="phoneNumber" required>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <textarea id="address" name="address" rows="4" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="state">State:</label>
+                <input type="text" id="state" name="state" required>
+            </div>
+
+            <div class="form-group">
+                <label for="country">Country:</label>
+                <select id="country" name="country" required>
+                    <option value="USA">USA</option>
+                    <option value="Canada">Canada</option>
+                    <!-- Add more options here -->
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Languages Known:</label>
+                <input type="checkbox" id="english" name="languages" value="English">
+                <label for="english">English</label>
+                <input type="checkbox" id="kannada" name="languages" value="Kannada">
+                <label for="kannada">Kannada</label>
+                <input type="checkbox" id="hindi" name="languages" value="Hindi">
+                <label for="hindi">Hindi</label>
+                <input type="checkbox" id="telugu" name="languages" value="Telugu">
+                <label for="telugu">Telugu</label>
+            </div>
+
+            <div class="form-group">
+                <input type="checkbox" id="declaration" required>
+                <label for="declaration">Hereby I declare all the given details are true</label>
+            </div>
+
+            <div class="form-group">
+                <p>Log in to <a href="#" id="ethnusLink">Ethnus</a> website.</p>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="register-button">REGISTER</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("registrationForm");
+
+            const fieldStrengths = {
+                firstName: ["POOR", "OK", "STRONG"],
+                lastName: ["POOR", "OK", "STRONG"],
+                password: ["POOR", "OK", "STRONG"],
+                // Add similar entries for other fields
+            };
+
+            for (const fieldName in fieldStrengths) {
+                const inputField = form.elements[fieldName];
+                const strengthDisplay = document.getElementById(fieldName + "Strength");
+
+                inputField.addEventListener("input", function () {
+                    const strength = calculateFieldStrength(this.value);
+                    strengthDisplay.textContent = fieldStrengths[fieldName][strength];
+                });
+            }
+
+            function calculateFieldStrength(value) {
+                // Implement your logic to calculate field strength here
+                // You can use length, complexity, or other criteria
+                // Return 0 for POOR, 1 for OK, and 2 for STRONG
+                if (value.length < 6) {
+                    return 0; // POOR
+                } else if (value.length < 10) {
+                    return 1; // OK
+                } else {
+                    return 2; // STRONG
+                }
+            }
+        });
+    </script>
+</body>
+</html>

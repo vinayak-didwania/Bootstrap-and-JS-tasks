@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Form</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Include Bootstrap JS (optional, if you want to use Bootstrap features like validation) -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Custom CSS for the form -->
+    <style>
+        body {
+            background-color: #f0f0f0;
+        }
+
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            margin-top: 50px;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .required::after {
+            content: " *";
+            color: red;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 5px;
+        }
+
+        .custom-btn {
+            width: 100%;
+            background-color: red;
+            color: white;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <form id="registration-form">
+                <div class="form-group">
+                    <label for="name">Name<span class="required"></span></label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                    <div class="error-message">Name is required.</div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email<span class="required"></span></label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                    <div class="error-message">Email is required.</div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password<span class="required"></span></label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                    <div class="error-message">Password is required.</div>
+                </div>
+                <div class="form-group">
+                    <label for="hobbies">Hobbies<span class="required"></span></label>
+                    <select class="form-control" id="hobbies" name="hobbies" required>
+                        <option value="">Select...</option>
+                        <option value="reading">Reading</option>
+                        <option value="traveling">Traveling</option>
+                        <option value="cooking">Cooking</option>
+                    </select>
+                    <div class="error-message">Hobbies is required.</div>
+                </div>
+                <button type="submit" class="custom-btn">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Include Bootstrap jQuery (required for Bootstrap JS) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+</body>
+</html>

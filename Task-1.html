@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Ethnus Layout</title>
+    <style>
+        /* Add your custom CSS styles here */
+        body {
+            background-color: #f8f9fa;
+        }
+        .blue-bar {
+            background-color: #007bff;
+            color: #000;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .sticky-bar {
+            position: sticky;
+            top: 0;
+            background-color: #ccc; /* Grey sticky bar */
+            z-index: 1000;
+            border-bottom: 1px solid #ddd;
+        }
+        .navbar {
+            padding: 10px 0;
+        }
+        .navbar .left-buttons {
+            margin-right: auto;
+        }
+        .navbar .right-buttons {
+            margin-left: auto;
+        }
+        .content {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff; /* White content area */
+        }
+        .grey-column {
+            background-color: #ccc; /* Grey 4-column area */
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Blue Bar -->
+            <div class="col-12 blue-bar">
+                <h1>Ethnus Layout</h1>
+            </div>
+        </div>
+        <div class="row">
+            <!-- Sticky Navigation Bar -->
+            <div class="col-12 sticky-bar">
+                <nav class="navbar">
+                    <div class="left-buttons">
+                        <button class="btn btn-link">HOME</button>
+                        <button class="btn btn-link">MENU</button>
+                        <button class="btn btn-link">ABOUT</button>
+                        <button class="btn btn-link">CONTACT</button>
+                    </div>
+                    <div class="right-buttons">
+                        <button class="btn btn-link">SIGNUP</button>
+                        <button class="btn btn-link">LOGIN</button>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="row">
+            <!-- 8 Column Content Area -->
+            <div class="col-md-8">
+                <div class="content">
+                    Write your content here
+                </div>
+            </div>
+            <!-- 4 Column Grey Area -->
+            <div class="col-md-4">
+                <div class="grey-column">
+                    This is
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

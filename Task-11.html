@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Validation</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        form {
+            width: 300px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .error-message {
+            color: red;
+        }
+        .error-border {
+            border: 1px solid red;
+        }
+
+        div {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <form id="myForm">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" class="error-border">
+            <span class="error-message">This field is required</span>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" class="error-border">
+            <span class="error-message">A valid email address is required</span>
+        </div>
+        <div>
+            <label for="website">Website:</label>
+            <input type="url" id="website" name="website" class="error-border">
+            <span class="error-message">A valid URL is required</span>
+        </div>
+        <div>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" class="error-border"></textarea>
+            <span class="error-message">This field is required</span>
+        </div>
+        <div>
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+
+    <script>
+        document.getElementById("myForm").addEventListener("submit", function(event) {
+            const name = document.getElementById("name");
+            const email = document.getElementById("email");
+            const website = document.getElementById("website");
+            const message = document.getElementById("message");
+
+            if (!name.value.trim()) {
+                name.classList.add("error-border");
+            } else {
+                name.classList.remove("error-border");
+            }
+
+            if (!email.value.trim() || !isValidEmail(email.value)) {
+                email.classList.add("error-border");
+            } else {
+                email.classList.remove("error-border");
+            }
+
+            if (!website.value.trim() || !isValidURL(website.value)) {
+                website.classList.add("error-border");
+            } else {
+                website.classList.remove("error-border");
+            }
+
+            if (!message.value.trim()) {
+                message.classList.add("error-border");
+            } else {
+                message.classList.remove("error-border");
+            }
+
+            if (!name.value.trim() || !email.value.trim() || !isValidEmail(email.value) || !website.value.trim() || !isValidURL(website.value) || !message.value.trim()) {
+                event.preventDefault();
+            }
+        });
+
+        function isValidEmail(email) {
+            // You can implement a more robust email validation pattern if needed
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailPattern.test(email);
+        }
+
+        function isValidURL(url) {
+            try {
+                new URL(url);
+                return true;
+            } catch (error) {
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>
